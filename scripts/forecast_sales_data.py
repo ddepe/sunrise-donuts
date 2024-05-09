@@ -53,6 +53,10 @@ future = model.make_future_dataframe(periods=365)
 
 forecast = model.predict(future)
 
+# Round the specified columns to 2 decimal places
+columns_to_round = ['yhat', 'yhat_upper', 'yhat_lower', 'trend', 'trend_upper', 'trend_lower']
+forecast[columns_to_round] = forecast[columns_to_round].round(2)
+
 fig, ax = plt.subplots(figsize=(10, 6))
 
 ax.set_xlim(pd.to_datetime(latest_date - datetime.timedelta(days=2)), 
