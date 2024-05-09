@@ -86,9 +86,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Contact
 For questions or suggestions, please reach out via GitHub issues.
 ```
-
-### Explanation:
-1. **Features:** Briefly highlights the repository's key functionalities.
-2. **Installation & Configuration:** Provides step-by-step instructions to set up the environment and necessary credentials.
-3. **Usage:** Explains the available scripts and their expected usage.
-4. **License & Contributing:** Outlines the licensing and contribution process.
