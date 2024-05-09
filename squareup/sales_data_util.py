@@ -107,9 +107,9 @@ def write_history(csv_writer, start_date, headers):
             sales_data["Tip"] += payment["tip_money"]["amount"] if "tip_money" in payment else 0
             sales_data["Refunds by Amount"] += payment["refunded_money"]["amount"] if "refunded_money" in payment else 0
             sales_data["Total"] += payment["total_money"]["amount"] if "total_money" in payment else 0
-            sales_data["Fees"] -= payment['processing_fee'][0]['amount_money']["amount"] if 'processing_fee' in payment else 0
+            sales_data["Fees"] += payment['processing_fee'][0]['amount_money']["amount"] if 'processing_fee' in payment else 0
 
-        sales_data["Net Total"] = sales_data["Total"] + sales_data["Fees"]
+        sales_data["Net Total"] = sales_data["Total"] - sales_data["Fees"]
         sales_data["Net Sales"] = sales_data["Gross Sales"] - sales_data["Refunds by Amount"]
         sales_data["Total Collected"] = sales_data["Total"]
         sales_data["Card"] = sales_data["Total"]
@@ -143,7 +143,6 @@ def write_history(csv_writer, start_date, headers):
                         end_time = last_midnight,
                         cursor=result.body["cursor"]
                     )
-                    print("2nd half")
 
                     if result.is_success():
                         if result.body and "payments" in result.body:

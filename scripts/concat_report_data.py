@@ -1,3 +1,4 @@
+"""Script to merge sales data downloaded from Squareup's report summary."""
 import argparse
 import csv
 import datetime
@@ -71,9 +72,9 @@ def combine_csv(files, output_file):
     combined_df.to_csv(output_file, index=False)
 
 # Example usage
-files = ['/home/ddepe/sunrise-donuts/data/sales-summary-2022.csv', 
-         '/home/ddepe/sunrise-donuts/data/sales-summary-2023.csv', 
-         '/home/ddepe/sunrise-donuts/data/sales-summary-2024.csv']
+files = ['./data/sales-summary-2022.csv', 
+         './data/sales-summary-2023.csv', 
+         './data/sales-summary-2024.csv']
 
 for file_path in files:
     transpose_csv(file_path)
