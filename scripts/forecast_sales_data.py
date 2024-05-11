@@ -25,16 +25,20 @@ import datetime
 import pandas as pd
 from prophet import Prophet
 import matplotlib.pyplot as plt
+import pathlib
 import plotly.graph_objs as go
 import plotly.offline as py
 
 from  squareup.sales_data_util import get_last_update_date
  
-input_csv = "data/aggregated_sales.csv"
+ # Get the directory of the current script
+base_dir = pathlib.Path(__file__).resolve().parent
+data_file_path = base_dir / 'data' / 'aggregated_sales.csv'
+output_dir_path = base_dir / 'output'
 
-df = pd.read_csv(input_csv)
+df = pd.read_csv(data_file_path)
 
-latest_date = get_last_update_date(input_csv)
+latest_date = get_last_update_date(data_file_path)
 
 # Rename the necessary columns to match Prophet's requirements
 df.rename(columns={"Sales": "ds", "Gross Sales": "y"}, inplace=True)
@@ -65,8 +69,8 @@ ax.set_xlim(pd.to_datetime(latest_date - datetime.timedelta(days=2)),
 fig1 = model.plot(forecast, ax=ax)
 fig2 = model.plot_components(forecast)
 
-fig1.savefig(f"output/forecast_{datetime.datetime.now().strftime('%Y%m%d')}.png")
-fig2.savefig(f"output/trends_{datetime.datetime.now().strftime('%Y%m%d')}.png")
+fig1.savefig(output_dir_path / f"forecast_{datetime.datetime.now().strftime('%Y%m%d')}.png")
+fig2.savefig(output_dir_path / f"trends_{datetime.datetime.now().strftime('%Y%m%d')}.png")
 
 # Create Plotly traces for the forecast and confidence intervals
 trace1 = go.Scatter(x=forecast['ds'], y=forecast['yhat'], mode='lines', name='Forecasted Sales')
@@ -90,7 +94,7 @@ layout = go.Layout(
 
 # Create and display the forecast plot using Plotly
 fig = go.Figure(data=[trace1, trace2, trace3, trace_actual], layout=layout)
-py.plot(fig, filename='output/sales_forecast.html', auto_open=False)
+py.plot(fig, filename=output_dir_path / 'sales_forecast.html', auto_open=False)
 
 
 # Create traces for the trend component and its confidence intervals
@@ -107,4 +111,4 @@ fig.update_layout(
     hovermode='x unified'
 )
 
-py.plot(fig, filename='output/sales_trends.html', auto_open=False)
+py.plot(fig, filename=output_dir_path / 'sales_trends.html', auto_open=False)
