@@ -32,7 +32,7 @@ import plotly.offline as py
 from  squareup.sales_data_util import get_last_update_date
  
  # Get the directory of the current script
-base_dir = pathlib.Path(__file__).resolve().parent
+base_dir = pathlib.Path(__file__).resolve().parent.parent
 data_file_path = base_dir / 'data' / 'aggregated_sales.csv'
 output_dir_path = base_dir / 'output'
 

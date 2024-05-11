@@ -13,7 +13,7 @@ import pathlib
 import squareup.sales_data_util
 
 # Get the directory of the current script
-base_dir = pathlib.Path(__file__).resolve().parent
+base_dir = pathlib.Path(__file__).resolve().parent.parent
 
 
 data_file_path = base_dir / 'data' / 'aggregated_sales.csv'
