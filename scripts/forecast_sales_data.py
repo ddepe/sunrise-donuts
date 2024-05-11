@@ -94,7 +94,7 @@ layout = go.Layout(
 
 # Create and display the forecast plot using Plotly
 fig = go.Figure(data=[trace1, trace2, trace3, trace_actual], layout=layout)
-py.plot(fig, filename=output_dir_path / 'sales_forecast.html', auto_open=False)
+py.plot(fig, filename=str(output_dir_path) + '/sales_forecast.html', auto_open=False)
 
 
 # Create traces for the trend component and its confidence intervals
@@ -111,4 +111,4 @@ fig.update_layout(
     hovermode='x unified'
 )
 
-py.plot(fig, filename=output_dir_path / 'sales_trends.html', auto_open=False)
+py.plot(fig, filename=str(output_dir_path) + '/sales_trends.html', auto_open=False)
