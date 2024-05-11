@@ -19,4 +19,4 @@ base_dir = pathlib.Path(__file__).resolve().parent.parent
 data_file_path = base_dir / 'data' / 'aggregated_sales.csv'
 last_date = squareup.sales_data_util.get_last_update_date(data_file_path) 
 
-squareup.sales_data_util.update_history(last_date)
+squareup.sales_data_util.update_history(last_date, data_file_path)

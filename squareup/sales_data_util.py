@@ -16,6 +16,7 @@ import csv
 import datetime
 import pytz
 import os
+import pathlib
 import square.client
 import square.http.auth.o_auth_2
 
@@ -28,6 +29,8 @@ bearer_auth_credential = square.http.auth.o_auth_2.BearerAuthCredentials(
 client = square.client.Client(
     bearer_auth_credentials=bearer_auth_credential,
     environment='production')
+
+
 
 # Set the time zone to PST (Pacific Standard Time)
 pst = pytz.timezone('America/Los_Angeles')
@@ -73,7 +76,7 @@ def generate_date_range(start_date, end_date):
         start_date += delta
 
 
-def update_history(last_date, headers=None):
+def update_history(last_date, file_path=None, headers=None):
     """
     Append historical sales data starting from the last recorded date to an existing aggregated sales CSV file.
 
@@ -103,7 +106,8 @@ def update_history(last_date, headers=None):
         ]
     
     # Open the existing aggregated sales CSV file in append mode
-    file_path = f'data/aggregated_sales.csv'
+    if file_path is None:
+        file_path = f'data/aggregated_sales.csv'
     with open(file_path, 'a', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=headers)
         write_history(writer, last_date, headers)
