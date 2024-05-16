@@ -10,13 +10,14 @@ Dependencies:
 """
 import pathlib
 
-import squareup.sales_data_util
+import squareup.sales_util
 
-# Get the directory of the current script
-base_dir = pathlib.Path(__file__).resolve().parent.parent
+if __name__ == "__main__":
+    # Get the directory of the current script
+    base_dir = pathlib.Path(__file__).resolve().parent.parent
 
 
-data_file_path = base_dir / 'data' / 'aggregated_sales.csv'
-last_date = squareup.sales_data_util.get_last_update_date(data_file_path) 
+    data_file_path = base_dir / 'data' / 'aggregated_sales.csv'
+    last_date = squareup.sales_util.get_last_update_date(data_file_path) 
 
-squareup.sales_data_util.update_history(last_date, data_file_path)
+    squareup.sales_util.update_history(last_date, data_file_path)

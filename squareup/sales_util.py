@@ -30,10 +30,9 @@ client = square.client.Client(
     bearer_auth_credentials=bearer_auth_credential,
     environment='production')
 
-
-
 # Set the time zone to PST (Pacific Standard Time)
 pst = pytz.timezone('America/Los_Angeles')
+
 
 def get_last_update_date(csv_file):
     """
