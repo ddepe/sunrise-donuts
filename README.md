@@ -47,38 +47,38 @@ This repository contains Python scripts and utilities for processing and forecas
 ## Usage
 ### Merging and Processing Sales Data
 1. **Merging Data:**
-   - `merge_report_data.py`: Aggregates data from multiple input CSV files into a single combined file and transposes rows and columns in the input sales data files.
+   - `merge_reports.py`: Aggregates data from multiple input CSV files into a single combined file and transposes rows and columns in the input sales data files.
     - Usage:
     ```bash
-     python merge_report_data.py
+     python merge_reports.py
      ```
 
 2. **Updating Aggregated Sales Data:**
-   - `update_sales_data.py`: Updates historical sales data by appending new data starting from the last recorded date.
+   - `update_sales.py`: Updates historical sales data by appending new data starting from the last recorded date.
    - Usage:
      ```bash
-     python update_sales_data.py
+     python update_sales.py
      ```
 
 ### Forecasting Sales Data
-- `forecast_sales_data.py`: Generates future forecasts based on historical sales data using Facebook Prophet.
+- `forecast_sales.py`: Generates future forecasts based on historical sales data using Facebook Prophet.
 - Usage:
   ```bash
-  python forecast_sales_data.py
+  python forecast_sales.py
   ```
 
 ### Utility Functions
-- `sales_data_util.py`: Contains utility functions for managing sales data files, including:
+- `sales_util.py`: Contains utility functions for managing sales data files, including:
   - `get_last_update_date(csv_file)`: Retrieves the last recorded date from a given sales CSV file.
   - `update_history(last_date)`: Updates historical sales data from the last recorded date.
 
 ## Visualization
 - **Plotly Interactive Plots:**
-  - Generated in `forecast_sales_data.py` for forecasting and exploring trends.
+  - Generated in `forecast_sales.py` for forecasting and exploring trends.
   - Saved as HTML files in the `output/` folder for easy viewing.
 
 - **Matplotlib Plots:**
-  - Also generated in `forecast_sales_data.py` for static visualizations and saved as PNG files.
+  - Also generated in `forecast_sales.py` for static visualizations and saved as PNG files.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
