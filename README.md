@@ -1,6 +1,7 @@
 # Sunrise Donuts Sales Data Analysis
 
 This repository contains Python scripts and utilities for processing and forecasting sales data from Square's reporting system. Using the Square API and external libraries like Prophet, these scripts provide automated tools to maintain and analyze aggregated sales data.
+- Weather data was also used to make better forecasting.
 
 ## Features
 - **Sales Data Aggregation:** Efficiently merges and processes multiple CSV files containing sales summaries.
